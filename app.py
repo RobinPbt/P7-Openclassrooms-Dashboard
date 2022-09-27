@@ -1,6 +1,3 @@
-import torch
-import os
-import pathlib
 import dash
 import pickle
 import shap
@@ -679,4 +676,4 @@ def generate_scatter_graph(feature_1, feature_1_dist, feature_2, feature_2_dist,
 
     
 if __name__ == '__main__':
-    app.run_server(debug=True, port=5000)
+    app.run_server()

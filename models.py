@@ -5,7 +5,6 @@ from config import *
 import os
 import pandas as pd
 import flask_sqlalchemy
-import sqlite3
 
 SQLALCHEMY_DATABASE_URI = "postgresql://hvoslnoxsyjbke:3af51c18a7e655cba16387d6da046249a43b4a99224b77892d3955e0b35c9b66@ec2-63-32-248-14.eu-west-1.compute.amazonaws.com:5432/d4j0hehuo81ve3"
 
