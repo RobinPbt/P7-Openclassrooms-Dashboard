@@ -631,7 +631,7 @@ def preprocess_joint(application_data, bureau_balance, bureau, previous_applicat
     application_data = installments_payments_preprocess(installments_payments, application_data)
     
     # Adding missing columns if applicable
-    true_cols = pd.read_csv('./Datas/cols_after_preprocess_joint.csv')
+    true_cols = pd.read_csv('./datas/cols_after_preprocess_joint.csv')
     true_cols.drop('Unnamed: 0', axis=1, inplace=True)
     diff_cols = set(true_cols.columns) - set(application_data.columns)
     for col in diff_cols:
