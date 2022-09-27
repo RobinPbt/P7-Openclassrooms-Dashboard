@@ -317,7 +317,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex: 1 1;
-  padding: 2rem;
+  padding: 1rem;
   max-width: 100%;
   width: 100%;
 }
@@ -330,6 +330,18 @@ body {
   flex: 1 1;
   max-width: 100%;
   width: 100%;
+  margin-top: 1rem;
+}
+
+#upload-shapes {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1 1;
+  max-width: 100%;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 #upload-status {

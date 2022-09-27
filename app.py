@@ -309,6 +309,10 @@ def build_predict_new():
                 # Upper upload panel
                 html.Div(id='upload-customer-container', children=[
                     
+                    html.P(children=[
+                        "Please upload customer csv files for prediction, expected number of columns is detailed under corresponding button"
+                    ]),
+                    
                     html.Div(id='upload-buttons', children=[
                         dcc.Upload(id='upload-application', children=[html.Button('application', style=style_dict)], multiple=False),
                         dcc.Upload(id='upload-bureau_balance', children=[html.Button('bureau_bal', style=style_dict)], multiple=False),
@@ -317,6 +321,16 @@ def build_predict_new():
                         dcc.Upload(id='upload-credit_card_balance', children=[html.Button('credit_card', style=style_dict)], multiple=False),
                         dcc.Upload(id='upload-POS_CASH_balance', children=[html.Button('POS_CASH', style=style_dict)], multiple=False),
                         dcc.Upload(id='upload-installments_payments', children=[html.Button('installments', style=style_dict)], multiple=False),
+                    ]),
+                    
+                    html.Div(id='upload-shapes', children=[
+                        dcc.Markdown(children=["Expected columns : 122"]),
+                        dcc.Markdown(children=["Expected columns : 003"]),
+                        dcc.Markdown(children=["Expected columns : 017"]),
+                        dcc.Markdown(children=["Expected columns : 037"]),
+                        dcc.Markdown(children=["Expected columns : 023"]),
+                        dcc.Markdown(children=["Expected columns : 008"]),
+                        dcc.Markdown(children=["Expected columns : 008"]),
                     ]),
                     
                     html.Div(id='upload-status', children=[
@@ -488,9 +502,10 @@ def update_output(uploaded_application, uploaded_bureau_balance, uploaded_bureau
 # Style for upload buttons
 style_dict={
     'width': '160px',
-    'height': '60px',
+    'height': '40px',
     'textAlign': 'center',
-    'margin': '10px',
+    'margin-bottom': '0px',
+    'margin-top': '0px',
 }
             
 def decode_csv_to_df(content):
@@ -507,12 +522,12 @@ def test_upload(content, expected_shape):
         df = decode_csv_to_df(content)
         
         if df.shape[1] != expected_shape:
-            status = "Your file should contain {} columns (y.c. index), please reload correct file".format(expected_shape)
+            status = "Incorrect nb columns"
         else:
             status = "File uploaded correctly"
     
     else:
-        status = "File not uploaded"
+        status = "The file isn't loaded yet"
         df = None
         
     return df, status
