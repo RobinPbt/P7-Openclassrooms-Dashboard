@@ -23,25 +23,12 @@ import dash_daq as daq
 from functions import *
 from utils import *
 
-# from pages.model_description import build_model_description
-# from pages.predict_existing import build_predict_existing
-# from pages.predict_new import build_predict_new
-
 app = Dash(__name__)
 
 # ----------------------------------------------------------------------------------
-# Loading heavy files
+# Loading files
    
-# Loading matrices
-# x = pd.read_csv('./datas/real_x_reduced.csv') # Note: this matrix corresponds to 5% of initial dataset for memory consumption issues
-# x.index = x['SK_ID_CURR']
-
-# y = pd.read_csv('./datas/real_y_reduced.csv') # Note: this matrix corresponds to 5% of initial dataset for memory consumption issues
-# y.index = x['SK_ID_CURR']
-
-# x.drop('SK_ID_CURR', axis=1, inplace=True)
-# y.drop('Unnamed: 0', axis=1, inplace=True)
-
+# Request database to load y matrix 
 y = get_full_labels()
 
 # Loading model, imputer and preprocessor
@@ -55,10 +42,7 @@ descriptions_df = pd.read_csv('./datas/var_description.csv')
 explainer = pickle.load(open('./models/explainer.pkl', 'rb'))
 shap_global_top_features = pd.read_csv('./datas/shap_top_feat.csv')
 
-# explainer = shap.LinearExplainer(load_clf, x)
-# shap_values_global = explainer.shap_values(x)
-
-# customer_list = list(x.index)
+# Request database to load list of customers id and list of features names
 customer_list = find_feature_distribution('SK_ID_CURR')
 features_list = get_features_names()
 
@@ -67,6 +51,7 @@ features_list = get_features_names()
 
 app.layout = html.Div(id="big-app-container", children=[
     
+    # Title banner
     html.Div(id="banner", className="banner",children=[
 
         html.Div(id="banner-text", children=[
@@ -80,18 +65,31 @@ app.layout = html.Div(id="big-app-container", children=[
         ]),
     ]),
 
+    # Body with 3 different tab/pages
     html.Div(id="app-container", children=[
     
         html.Div(id="tabs", className="tabs", children=[
             dcc.Tabs(id='app-tabs', value='tab-1', className="custom-tabs", children=[
                 dcc.Tab(
-                    id="tab-1", label='Predict existing customer',value='tab-1', className="custom-tab", selected_className="custom-tab--selected"
+                    id="tab-1", 
+                    label='Predict existing customer',
+                    value='tab-1', 
+                    className="custom-tab", 
+                    selected_className="custom-tab--selected",
                 ),
                 dcc.Tab(
-                    id="tab-2", label='Predict new customer',value='tab-2', className="custom-tab", selected_className="custom-tab--selected"
+                    id="tab-2", 
+                    label='Predict new customer',
+                    value='tab-2', 
+                    className="custom-tab", 
+                    selected_className="custom-tab--selected",
                 ),
                 dcc.Tab(
-                    id="tab-3", label='Model description',value='tab-3', className="custom-tab", selected_className="custom-tab--selected"
+                    id="tab-3", 
+                    label='Model description',
+                    value='tab-3', 
+                    className="custom-tab", 
+                    selected_className="custom-tab--selected",
                 ),
             ]),
         ]),
@@ -99,6 +97,7 @@ app.layout = html.Div(id="big-app-container", children=[
         html.Div(id="app-content"),
     ]),
     
+    # Markdown to fill "lern more" button on the banner
     html.Div(id="markdown", className="modal", children=[
         html.Div(id="markdown-container", className="markdown-container", children=[
             
@@ -130,6 +129,7 @@ app.layout = html.Div(id="big-app-container", children=[
 # ----------------------------------------------------------------------------------
 # GLobal callbacks
 
+# Callback which displays the content of the selected tab
 @app.callback(
     Output('app-content', 'children'),
     Input('app-tabs', 'value')
@@ -142,7 +142,8 @@ def render_content(selected_tab):
         return build_predict_new()
     else:
         return build_model_description()
-    
+
+# Callback which displays the content of the "learn more" button
 @app.callback(
     Output("markdown", "style"),
     [Input("learn-more-button", "n_clicks"), Input("markdown_close", "n_clicks")],
@@ -160,6 +161,7 @@ def update_click_output(button_click, close_click):
 # ----------------------------------------------------------------------------------
 # Global functions and variables
 
+# Title for sub-containers
 def generate_section_banner(title):
     return html.Div(className="section-banner", children=title)
 
@@ -249,15 +251,9 @@ def build_predict_existing(customer_list):
                                 min=0,
                                 showCurrentValue=True,
                                 color="#f4d44d",
-                                # color={"gradient":False,"ranges":{"green":[0, 0.5], "red":[0.5, 1]}},
                             ),
                         ]),
                     ]),
-                    
-                    # html.Div(id="tab-1-graph-2", children=[
-                    #     generate_section_banner("Probability"),
-                    #     html.H1(id="display-proba"),
-                    # ]),
                     
                     html.Div(id="tab-1-graph-2", children=[
                         generate_section_banner("Features importance"),
@@ -271,6 +267,7 @@ def build_predict_existing(customer_list):
 # ----------------------------------------------------------------------------------
 # Callbacks tab 1 (predict existing)
 
+# Generating prediction and plotting features importance
 @app.callback(
     Output('tab-1-display-prediction', 'children'),
     Output('tab-1-proba-gauge', 'value'),
@@ -280,7 +277,7 @@ def build_predict_existing(customer_list):
 
 def compute_predictions_and_features(customer_id):
     
-    # We request API with our customer id
+    # We request API with our customer id to get predictions
     PREDICT_URI = 'https://p7-openclassrooms-api.herokuapp.com/api/predict-existing/'
     response = requests.request(method='GET', url=PREDICT_URI, params={'id_customer' : customer_id})
     dict_response = json.loads(response.content.decode('utf-8'))
@@ -288,19 +285,14 @@ def compute_predictions_and_features(customer_id):
     probas = dict_response['datas']['proba']
     predictions = dict_response['datas']['prediction']
     
+    # Request database to get customer features
     selected_customer = find_customer_features(customer_id)
     
-#     # Predictions
-#     probas = load_clf.predict_proba(selected_customer.values.reshape(1, -1))[:,1]
-#     predictions = (probas >= 0.5).astype(int)
-    
-#     probas = float(probas[0])
-#     predictions = int(predictions[0])
-    
+    # Transforming prediction in text
     outputs_pred = np.array(['Accepted','Refused'])
-    
     current_prediction = outputs_pred[predictions]
     
+    # Generating figure
     fig = generate_shap_local_feat(explainer, selected_customer, features_list, layout_dict)
     
     return current_prediction, probas, fig
@@ -437,9 +429,7 @@ def update_output(uploaded_application, uploaded_bureau_balance, uploaded_bureau
     
     # If files uploaded correctly, we make predictions and diplays results
     if upload_counter == 7:
-    
-        # Preprocessing
-    
+       
         # Cleaning, feature engineering and merge
         uploaded_datas, _ = preprocess_joint(
             application_df, 
@@ -476,10 +466,11 @@ def update_output(uploaded_application, uploaded_bureau_balance, uploaded_bureau
         probas = dict_response['datas']['proba']
         predictions = dict_response['datas']['prediction']
 
+        # Transforming prediction in text
         outputs_pred = np.array(['Accepted','Refused'])
-        
         current_prediction = outputs_pred[predictions]
 
+        # Generating figure
         fig = generate_shap_local_feat(explainer, selected_customer, features_list, layout_dict)
     
     # If files not uploaded correctly, we display empty graphs and waiting text
@@ -499,10 +490,6 @@ def update_output(uploaded_application, uploaded_bureau_balance, uploaded_bureau
 style_dict={
     'width': '160px',
     'height': '60px',
-    # 'lineHeight': '60px',
-    # 'borderWidth': '1px',
-    # 'borderStyle': 'dashed',
-    # 'borderRadius': '5px',
     'textAlign': 'center',
     'margin': '10px',
 }
@@ -591,7 +578,7 @@ def build_model_description():
 
 def plot_graphs(feat_1, feat_2):
     
-    # Name container banner 
+    # Name sub-containers banners depending on selecting feature
     title_graph_1 = "Distribution of {}".format(feat_1)
     title_graph_2 = "Distribution of {}".format(feat_2)
     title_graph_3 = "Scatter of {} and {}".format(feat_1, feat_2)
@@ -617,8 +604,6 @@ layout_dict_global = layout_dict.copy()
 layout_dict_global['autosize'] = False
 layout_dict_global['height'] = 700
 layout_dict_global['margin'] = {'l':110, 'b':90, 't':10}
-# layout_dict_global['yaxis'] = {'title': {'text' : None}}
-# layout_dict_global['xaxis'] = {'title': {'text' : None}}
 
 # Modify layout for histograms
 layout_dict_hists = layout_dict.copy()
@@ -643,17 +628,6 @@ top_global_features = shap_global_top_features["Feature name"]
 # Shap global feature importance
 def generate_shap_global_feat(shap_global_top_features, layout_dict):
     
-#     # Shap values for features
-#     shap_df_global = pd.DataFrame(abs(shap_values_global), columns=x.columns)
-#     top_global_features = shap_df_global.mean(axis=0).sort_values(ascending=False)[:20].index
-#     top_features_values = shap_df_global.mean(axis=0).sort_values(ascending=False)[:20]
-    
-#     # Generate figure to plot
-#     plot_df = pd.DataFrame()
-#     plot_df["Feature name"] = top_global_features
-#     plot_df["Shap values"] = top_features_values.values
-#     plot_df = plot_df.sort_values(by="Shap values")
-    
     fig = px.bar(shap_global_top_features, x="Shap values", y="Feature name")
     fig.update_layout(layout_dict)
     fig.update_traces(
@@ -664,6 +638,7 @@ def generate_shap_global_feat(shap_global_top_features, layout_dict):
     
     return fig
 
+# To generate the 2 distribution histograms
 def generate_hist_graph(feature, feature_dist, y, colors):
     
     # Create df with feature
@@ -671,21 +646,22 @@ def generate_hist_graph(feature, feature_dist, y, colors):
     df[feature] = feature_dist
     df['TARGET'] = y['TARGET'].values
     
+    # Creating one distribution per target (accepted or refused)
     x1 = df[df['TARGET'] == 0][feature].values
     x2 = df[df['TARGET'] == 1][feature].values
-
     hist_data = [x1, x2]
-
     group_labels = ['Accepted', 'Refused']
 
-    # Create distplot with curve_type set to 'normal'
+    # Create distplot
     fig = ff.create_distplot(hist_data, group_labels, colors=colors, bin_size=.2, show_rug=False)
     fig.update_layout(layout_dict_hists)
     
     return fig
 
+# To generate scatter between 2 selected features
 def generate_scatter_graph(feature_1, feature_1_dist, feature_2, feature_2_dist, y, colors):
-    
+
+    # Transforming targets in text
     y_bis = y.copy()
     y_bis['TARGET_str'] = y_bis['TARGET'].apply(lambda x: "Accepted" if x == 0 else "Refused")
     
@@ -695,6 +671,7 @@ def generate_scatter_graph(feature_1, feature_1_dist, feature_2, feature_2_dist,
     df[feature_2] = feature_2_dist
     df['TARGET'] = y_bis['TARGET_str'].values
     
+    # Create scatter
     fig = px.scatter(df, x=feature_1, y=feature_2, color="TARGET", color_discrete_sequence=colors, labels=None)
     fig.update_layout(layout_dict_scatter)
     

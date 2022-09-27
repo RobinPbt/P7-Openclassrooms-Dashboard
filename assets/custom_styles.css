@@ -3,10 +3,11 @@
 - Banner
 - Modal
 - Tabs
-- Main Dashboard Tab
-- Measurement Tab
-- Tables/Dropdown
-- Containers
+- Global containers
+- Tab 1
+- Tab 2
+- Tab 3
+- Dropdowns
 - Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -33,6 +34,9 @@ body {
   align-items: center;
   padding: 0 6rem;
 }
+
+/* Banner
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .banner {
   height: fit-content;
@@ -84,6 +88,9 @@ body {
   height: 3rem;
   margin: 0px 10px;
 }
+
+/* Modal
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 /* The Modal (background) */
 .modal {
@@ -176,342 +183,8 @@ body {
   border-bottom: 1px solid #4b5460;
 }
 
-/* Main Dashboard Tab
+/* Global containers
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-#top-section-container {
-  height: 40rem;
-  flex-direction: row;
-  display: flex;
-  max-width: 100%;
-  /*width: 100%;*/
-}
-
-#metric_header > div {
-  font-weight: bold;
-  font-size: 1.35rem;
-  line-height: 3rem;
-}
-
-#m_header_5 {
-  margin-top: 0rem !important;
-}
-
-.metric-row {
-  font-size: 1.3rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center; /* vertical center row items*/
-}
-
-.metric-row:hover {
-  background-color: #0F1328;
-}
-
-/*Dash Daq Graduatebar */
-#Diameter_OOC_graph > div > div,
-#Etch1_OOC_graph > div > div,
-#Film-Thickness_OOC_graph > div > div,
-#Metric4_OOC_graph > div > div,
-#Etch2_OOC_graph > div > div,
-#Line-Width_OOC_graph > div > div,
-#Overlay_OOC_graph > div > div,
-#Volume_OOC_graph > div > div {
-  width: 100%;
-  background-color: #1e2130 !important;
-}
-
-#control-chart-container {
-  position: relative;
-  z-index: 4;
-  width: 100%;
-  height: 33%;
-  border-top: #1E2130 solid 0.8rem;
-}
-
-#metric-summary-session {
-  height: 100%;
-  flex: 1 1 auto;
-}
-
-#tab-1-graph-1 {
-  justify-content: bottom;
-  height: 100%;
-  max-width: 50%;
-  flex: 1 1 auto;
-}
-
-#tab-1-graph-2 {
-  height: 100%;
-  max-width: 50%;
-  margin: 0;
-  border-left: #1E2130 solid 0.8rem;
-  flex: 1 1 auto;
-}
-
-#tab-2-graph-1 {
-  justify-content: bottom;
-  height: 100%;
-  max-width: 50%;
-  flex: 1 1 auto;
-}
-
-#tab-2-graph-2 {
-  height: 100%;
-  max-width: 50%;
-  margin: 0;
-  border-left: #1E2130 solid 0.8rem;
-  flex: 1 1 auto;
-}
-
-#tab-3-graph-1 {
-  max-height: 33%;
-  max-width: 100%;
-  flex: 1 1 auto;
-}
-
-#tab-3-graph-2 {
-  max-height: 33%;
-  max-width: 100%;
-  margin: 0;
-  border-top: #1E2130 solid 0.8rem;
-  flex: 1 1 auto;
-}
-
-#tab-3-graph-3 {
-  max-height: 33%;
-  max-width: 100%;
-  margin: 0;
-  border-top: #1E2130 solid 0.8rem;
-  flex: 1 1 auto;
-}
-
-#ooc-piechart-outer {
-  height: 100%;
-  margin: 0;
-  border-left: #1E2130 solid 0.8rem;
-  flex: 1 1 auto;
-}
-
-#piechart.plot-container plotly {
-  height: 100%;
-}
-
-#card-1, #card-2, #utility-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-#card-1 {
-  margin-bottom: 3rem;
-}
-
-#tab-1-predict-container, #tab-1-proba-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-#tab-2-predict-container, #tab-2-proba-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-
-#utility-card {
-  height: 4rem !important;
-  margin-top: 2rem;
-}
-
-#stop-button > div > button:hover {
-  color: #91dfd2 !important;
-}
-
-/* Tab1 content
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-#selection-dropdown {
-  width: 20%;
-}
-
-#banner-graph-1 {
-  position: relative;
-}
-
-#feat-1-dropdown {
-  width: 40%;
-  position: absolute;
-/*   display: flex;
-  flex-direction: row;
-  justify-content: flex-end; */
-  z-index: 6;
-  margin-left: 37rem;
-  margin-top: -3.5rem;
-}
-
-#feat-2-dropdown {
-  width: 18.3%;
-  position: absolute;
-/*   display: flex;
-  flex-direction: row;
-  justify-content: flex-end; */
-  z-index: 6;
-  margin-left: 37rem;
-  margin-top: -3.5rem;
-}
-
-#set-specs-intro-container {
-  font-weight: bold;
-  margin: 8rem 5rem 1rem;
-  font-size: 1.6rem;
-}
-
-
-#metric-select-title {
-  color: darkgray;
-}
-
-#button-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-#value-setter-view-btn {
-  margin-left: 20px;
-}
-
-#value-setter-panel {
-  line-height: 2;
-}
-
-#value-setter-panel-header {
-  font-weight: bold;
-  color: darkgray;
-  line-height: 1;
-  padding: 2rem 0;
-  border-bottom: 1px solid #4b5460;
-}
-
-#value-setter-panel-header > div {
-  text-align: right;
-}
-
-#value-setter-view-btn, #value-setter-set-btn {
-  border: 1px solid #4B5460;
-  color: darkgray;
-}
-
-#value-setter-set-btn:hover, #value-setter-view-btn:hover {
-  color: #91dfd2;
-  border-color: white;
-}
-
-#value-setter-panel-usl, #value-setter-panel-lsl, #value-setter-panel-ucl, #value-setter-panel-lcl {
-  padding: 1rem 0;
-}
-
-.output-datatable {
-  margin: 2rem 0rem 2rem 2rem;
-  line-height: 3;
-  align-self: flex-end;
-  width: 80%;
-}
-
-/*Dropdown*/
-.setting-input {
-  width: 100% !important;
-  height: 100%;
-}
-
-.react-numeric-input, .react-numeric-input input {
-  width: 100% !important;
-}
-
-.react-numeric-input input {
-  background-color: #242633 !important;
-  border-color: darkgray !important;
-  color: white !important;
-}
-
-.react-numeric-input b:nth-child(2) i {
-  border-color: transparent transparent white !important;
-}
-
-.react-numeric-input b:nth-child(3) i {
-  border-color: white transparent transparent !important;
-}
-
-
-/* Dropdown
-----------------------------------------------*/
-
-/*Dropdown items*/
-.Select-control, .Select-multi-value-wrapper, .Select-menu-outer div {
-  background-color: #242633;
-}
-
-/*Dropdown items*/
-.Select-control, .Select, .Select-value-label, .Select-clear-zone {
-  color: white;
-}
-
-
-/*Dropdown items*/
-.Select-menu-outer {
-  background-color: #242633;
-  border: 1px solid darkgray !important;
-}
-
-/*Dropdown items*/
-.Select-menu-outer div:hover {
-  background-color: rgba(36, 38, 51, 0.5) !important;
-  cursor: pointer;
-}
-
-/*Dropdown arrow + delete button*/
-.Select-control, .Select-control > span {
-  color: white;
-  background: #242633 !important;
-}
-
-/*Placeholder*/
-.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
-  color: white !important;
-}
-
-/*Placeholder*/
-.Select--single > .Select-control .Select-value, .Select-placeholder {
-  /*border: 1px solid darkgray;*/
-  border-radius: 4px;
-  background-color: #242633;
-  cursor: pointer;
-}
-
-
-.Select.is-focused:not(.is-open) > .Select-control {
-  border-color: #91dfd2 !important;
-}
-
-/* Container
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-/* Global containers */
 
 #app-container {
   background: #161a28;
@@ -529,47 +202,13 @@ body {
   height: 100%;
 }
 
-#settings-menu {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  margin: 4rem 5rem 1rem;
-}
-
-#metric-select-menu {
-  flex: 1 1 0;
-}
-
-#value-setter-menu {
-  flex: 1 1 30%;
-  margin-left: 5rem;
-  display: flex;
-  flex-direction: column;
-}
-
-#status-container {
-  width: 100%;
-  max-width: 100%;
+#metric-summary-session {
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
+  flex: 1 1 auto;
 }
 
-#graphs-container {
-  display: flex;
-  flex-direction: column;
-  flex: 3 1;
-  max-width: 100%;
-  width: 100%;
-}
-
-/* max-width: calc(75%), width: 70%
-
-/* Tab 1 containers */
+/* Tab 1
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 #status-tab-1-container {
   width: 100%;
@@ -615,7 +254,41 @@ body {
   border-top: #1E2130 solid 0.8rem;
 }
 
-/* Tab 2 containers */
+#tab-1-graph-1 {
+  justify-content: bottom;
+  height: 100%;
+  max-width: 50%;
+  flex: 1 1 auto;
+}
+
+#tab-1-graph-2 {
+  height: 100%;
+  max-width: 50%;
+  margin: 0;
+  border-left: #1E2130 solid 0.8rem;
+  flex: 1 1 auto;
+}
+
+#tab-1-predict-container P, #tab-1-proba-container P {
+  margin-left: 2rem;
+  margin-top: 2rem;
+  color: inherit;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+#tab-1-predict-container, #tab-1-proba-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Tab 2
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 #status-tab-2-container {
   width: 100%;
@@ -655,7 +328,6 @@ body {
   align-items: center;
   justify-content: space-evenly;
   flex: 1 1;
-/*   padding: 2rem; */
   max-width: 100%;
   width: 100%;
 }
@@ -666,7 +338,6 @@ body {
   align-items: center;
   justify-content: space-evenly;
   flex: 1 1;
-/*   padding: 2rem; */
   max-width: 100%;
   width: 100%;
 }
@@ -683,7 +354,42 @@ body {
   border-top: #1E2130 solid 0.8rem;
 }
 
-/* Tab 3 containers */
+#tab-2-graph-1 {
+  justify-content: bottom;
+  height: 100%;
+  max-width: 50%;
+  flex: 1 1 auto;
+}
+
+#tab-2-graph-2 {
+  height: 100%;
+  max-width: 50%;
+  margin: 0;
+  border-left: #1E2130 solid 0.8rem;
+  flex: 1 1 auto;
+}
+
+#tab-2-predict-container P, #tab-2-proba-container P {
+/*   margin: 2rem; */
+  margin-left: 2rem;
+  margin-top: 2rem;
+  color: inherit;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+#tab-2-predict-container, #tab-2-proba-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Tab 3
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 #status-tab-3-container {
   width: 100%;
@@ -696,36 +402,16 @@ body {
   padding: 0;
 }
 
-/* #tab-3-graphs-container {
-  display: flex;
-  flex-direction: column;
-  flex: 3 1;
-  position: relative;
-  z-index: 4;
-  max-width: 50%;
-  width: 50%;
-  height: 100%;
-}  */
-
 #quick-stats {
   display: flex;
   flex-direction: column;
-/*   align-items: center; */
   justify-content: flex-start;
   border-right: #1E2130 solid 0.8rem;
   flex: 1 1;
-/*   padding: 2rem; */
   max-width: 50%;
   width: 50%;
   height: 100%;
 }
-
-/* #quick-stats.row {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-} */
 
 #tab-3-graphs-container {
   display: flex;
@@ -735,125 +421,126 @@ body {
   width: 50%;
 }
 
-
-
-/* Tab 2 Quick stats
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-#operator-led {
-  width: 200px;
+#banner-graph-1 {
+  position: relative;
 }
 
-#operator-led > div {
-  width: 80%;
-  margin: auto;
+#tab-3-graph-1 {
+  max-height: 33%;
+  max-width: 100%;
+  flex: 1 1 auto;
 }
 
-#operator-led > div > div {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+#tab-3-graph-2 {
+  max-height: 33%;
+  max-width: 100%;
+  margin: 0;
+  border-top: #1E2130 solid 0.8rem;
+  flex: 1 1 auto;
 }
 
-#operator-led > div > div svg:nth-child(1) {
-  margin-left: -1rem;
+#tab-3-graph-3 {
+  max-height: 33%;
+  max-width: 100%;
+  margin: 0;
+  border-top: #1E2130 solid 0.8rem;
+  flex: 1 1 auto;
 }
 
-#progress-gauge > div, #progress-gauge > div > div, #progress-gauge > div > div > div {
-  width: 100%;
-  text-align: center;
+/* Dropdowns
+----------------------------------------------*/
+
+#selection-dropdown {
+  width: 20%;
 }
 
-#progress-gauge svg {
-  width: 80%;
-  height: auto;
+#feat-1-dropdown {
+  width: 40%;
+  position: absolute;
+  z-index: 6;
+  margin-left: 37rem;
+  margin-top: -3.5rem;
 }
 
-#progress-gauge > div > div > div > div {
+#feat-2-dropdown {
+  width: 18.3%;
+  position: absolute;
+  z-index: 6;
+  margin-left: 37rem;
+  margin-top: -3.5rem;
+}
+
+/*Dropdown*/
+.setting-input {
+  width: 100% !important;
+  height: 100%;
+}
+
+.react-numeric-input, .react-numeric-input input {
+  width: 100% !important;
+}
+
+.react-numeric-input input {
+  background-color: #242633 !important;
+  border-color: darkgray !important;
   color: white !important;
 }
 
-/*pressure-gauge track*/
-.eUJyCY .track {
-  stroke: #f4d44d !important;
-  stroke-width: 10;
+.react-numeric-input b:nth-child(2) i {
+  border-color: transparent transparent white !important;
 }
 
-.eUJyCY .track.progress {
-  stroke: #fff3c5 !important;
+.react-numeric-input b:nth-child(3) i {
+  border-color: white transparent transparent !important;
 }
 
-/* Tab 2 Specs
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-#stop-button > div > button {
+/*Dropdown items*/
+.Select-control, .Select-multi-value-wrapper, .Select-menu-outer div {
+  background-color: #242633;
+}
+
+/*Dropdown items*/
+.Select-control, .Select, .Select-value-label, .Select-clear-zone {
+  color: white;
+}
+
+/*Dropdown items*/
+.Select-menu-outer {
+  background-color: #242633;
+  border: 1px solid darkgray !important;
+}
+
+/*Dropdown items*/
+.Select-menu-outer div:hover {
+  background-color: rgba(36, 38, 51, 0.5) !important;
+  cursor: pointer;
+}
+
+/*Dropdown arrow + delete button*/
+.Select-control, .Select-control > span {
+  color: white;
+  background: #242633 !important;
+}
+
+/*Placeholder*/
+.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
   color: white !important;
-  background-color: #1d202d !important;
-  border: 1px solid #4B5460 !important;
+}
+
+/*Placeholder*/
+.Select--single > .Select-control .Select-value, .Select-placeholder {
+  /*border: 1px solid darkgray;*/
   border-radius: 4px;
-  height: 40px;
-  line-height: 40px;
+  background-color: #242633;
+  cursor: pointer;
 }
 
-#stop-button > div > button:hover {
-  color: #91dfd2 !important;
-  border-color: white !important;
-  background-color: #1d202d !important;
+.Select.is-focused:not(.is-open) > .Select-control {
+  border-color: #91dfd2 !important;
 }
 
-#card-1 P, #card-2 P {
-  margin: 2rem;
-  color: inherit;
-  font-weight: bold;
-  align-self: flex-start;
-}
-
-#card-2 .scale, #card-2 .needle, #card-2 .needle-knob {
-  display: none !important;
-}
-
-#tab-1-predict-container P, #tab-1-proba-container P {
-/*   margin: 2rem; */
-  margin-left: 2rem;
-  margin-top: 2rem;
-  color: inherit;
-  font-weight: bold;
-  align-self: flex-start;
-}
-
-#tab-2-predict-container P, #tab-2-proba-container P {
-/*   margin: 2rem; */
-  margin-left: 2rem;
-  margin-top: 2rem;
-  color: inherit;
-  font-weight: bold;
-  align-self: flex-start;
-}
-
-/* Tab 2 metric row
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.metric-row-button {
-  border: none;
-  padding: 0px 0px;
-  color: #95969A;
-  font-size: 1rem;
-  letter-spacing: 0.02rem;
-}
-
-.metric-row-button:hover {
-  border: none;
-  color: white !important;
-}
-
-#metric-div {
-  padding: 1rem 2rem 1rem 1rem;
-}
-
-#metric-rows {
-  overflow-y: scroll;
-  width: 100%;
-  height: 30rem;
-}
+/* Media Queries
+----------------------------------------------*/
 
 /*
   ##Device = Most of the Smartphones Mobiles / ipad (Portrait)
@@ -903,34 +590,6 @@ body {
     font-size: inherit;
   }
 
-  #settings-menu {
-    margin: 2rem;
-    flex-direction: column;
-  }
-
-  #settings-menu > div {
-    width: 100%;
-    flex: none;
-    display: flex;
-    flex-direction: column;
-    flex-basis: auto;
-    margin: 2rem 0rem;
-  }
-
-  #value-setter-panel-header {
-    display: none;
-  }
-
-  #button-div {
-    display: block;
-    text-align: center;
-  }
-
-  #button-div button {
-    margin: 1rem auto;
-    display: block;
-  }
-
   .output-datatable {
     align-self: center;
     margin: 2rem;
@@ -959,12 +618,6 @@ body {
     max-width: 100%;
   }
     
-  #graphs-container {
-    flex: 1;
-    max-width: 100%;
-    width: 100%;
-  }
-
   #tab-1-container {
     flex: 1;
     max-width: 100%;
@@ -992,19 +645,12 @@ body {
     width: 100%;
     height: auto;
   }
-    
-  #card-1 P, #card-2 P {
-    align-self: auto;
-  }
 
   #predict-containe P, #proba-container P {
     align-self: auto;
   }
 
   /*Removing borders}*/
-  #ooc-piechart-outer {
-    border-left: none;
-  }
 
   #quick-stats {
     border-right: none;
