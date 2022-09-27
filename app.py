@@ -22,6 +22,8 @@ from utils import *
 
 app = Dash(__name__)
 
+server = app.server
+
 # ----------------------------------------------------------------------------------
 # Loading files
    
