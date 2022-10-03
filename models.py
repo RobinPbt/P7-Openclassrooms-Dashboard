@@ -6,7 +6,7 @@ import os
 import pandas as pd
 import flask_sqlalchemy
 
-SQLALCHEMY_DATABASE_URI = "postgresql://egdovowtjhmeif:c47bf6354b57df5a78771a562e313400bec41585b08c5d8d29ab2b5679bb3b6d@ec2-34-247-72-29.eu-west-1.compute.amazonaws.com:5432/debloe935gh3nf"
+SQLALCHEMY_DATABASE_URI = "postgresql://hjfjmqghwjxjcg:62c01f3030a04e47d89be74a5105c4a6ddfafba045d1694279a3098466f8b707@ec2-52-49-201-212.eu-west-1.compute.amazonaws.com:5432/d6cku0lf8ftp7"
 
 # Create engine object
 engine = flask_sqlalchemy.sqlalchemy.engine.create_engine(SQLALCHEMY_DATABASE_URI)
