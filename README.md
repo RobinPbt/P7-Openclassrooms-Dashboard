@@ -11,8 +11,6 @@ The other repositories about this project can be found on the following links :
 - API : https://github.com/RobinPbt/P7-Openclassrooms-API
 - Modeling : https://github.com/RobinPbt/P7-Openclassrooms
 
-The dashboard application can be found on the following link : https://p7-openclassrooms-dash.herokuapp.com/
-
 # Screenshots
 
 ![image](https://user-images.githubusercontent.com/104992181/193087389-f8685ef4-d192-4b79-840a-cee0423a798b.png)
